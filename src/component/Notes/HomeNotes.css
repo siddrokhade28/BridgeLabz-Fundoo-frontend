@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Open+Sans&family=Roboto:wght@400&display=swap');
+
+.fst-div {
+    border: 1px solid green;
+
+    padding: 4px;
+}
+
+.snd-div {
+    border: 1px solid black;
+    border-color: black;
+    margin: 0px 0px;
+    display: flex;
+    vertical-align: middle;
+
+}
+
+.menu_icon {
+    color: #5f6368;
+    opacity: 1;
+    cursor: pointer;
+    padding: 10px;
+    transform: scale(1.1);
+}
+
+.menu_icon :hover {
+    background-color: #F0F3F4;
+
+}
+
+.icon_size {
+    border: 1px solid green;
+    border-radius: 50px;
+    padding: 4px;
+
+}
+
+
+.notes-png {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    padding-top: 1px;
+    transform: scale(1);
+}
+
+
+.keep-txt {
+    color: #5f6368;
+    opacity: 1;
+    font-family: "Product Sans", Arial, sans-serif;
+    padding-top: 16px;
+    font-size: 22px;
+    position: relative;
+}
+
+.Search-bar {
+
+    display: flex;
+    /* border-style: groove; */
+    margin-left: 18vh;
+    border-radius: 10px;
+    background-color: #F0F3F4;
+    height: 40px;
+    display: flex;
+    margin-top: 9px;
+
+
+}
+
+.Search-bar input {
+    padding-left: 10px;
+    border-style: none;
+    font-size: medium;
+    background-color: #F0F3F4;
+    width: 87vh;
+}
+
+.Search-bar input:focus {
+    outline: none;
+}
+
+.Search-bar span {
+    padding-left: 10px;
+    padding-bottom: 70px;
+    margin-top: 13px;
+    transform: scale(1.1);
+}
+
+.other-icon {
+    display: flex;
+    margin-left: 60px;
+    padding-top: 8px;
+
+}
+
+
+.refresh-icon {
+    color: #5f6368;
+    opacity: 1;
+    cursor: pointer;
+    padding: 10px;
+    transform: scale(1.1);
+    border-radius: 50px;
+}
+
+.gridView {
+    color: #5f6368;
+    opacity: 1;
+    cursor: pointer;
+    padding: 10px;
+    transform: scale(1.1);
+    padding-left: 20px;
+    border-radius: 50px;
+}
+
+.setting {
+    color: #5f6368;
+    opacity: 1;
+    cursor: pointer;
+    padding: 10px;
+    transform: scale(1.1);
+    padding-left: 20px;
+    border-radius: 50px;
+}
+
+.apps {
+    color: #5f6368;
+    opacity: 1;
+    cursor: pointer;
+    padding-top: 10px;
+    transform: scale(1.1);
+    padding-left: 20px;
+    border-radius: 50px;
+}
+
+.logout button {
+    border: 1px solid black;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 19vh;
+    height: 40px;
+    font-size: medium;
+    font-family: "Product Sans", Arial, sans-serif;
+    background-color: #FABC05;
+}
