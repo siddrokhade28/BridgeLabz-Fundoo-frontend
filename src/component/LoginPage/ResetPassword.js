@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Avatar, Grid, Paper, TextField, Button, Typography, Link } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const ResetPassword = ({ handleChange }) => {
@@ -16,6 +17,7 @@ const ResetPassword = ({ handleChange }) => {
     const [confirmPassword, SetConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [sucess, setSucess] = useState('')
+    const naviagte = useNavigate('');
 
     const handlePassword = (event) => {
         setPassword(event.target.value);
@@ -55,11 +57,11 @@ const ResetPassword = ({ handleChange }) => {
             })
     }
 
-    // useEffect(() => {
-    //     if (!localStorage.getItem('token')) {
-    //         naviagte('/Login')
-    //     }
-    // })
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            naviagte('/Login')
+        }
+    })
     return (
         <div>
             <Grid>

@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Open+Sans&family=Roboto:wght@400&display=swap');
 
 .fst-div {
-    border: 1px solid green;
-
+    /* border: 1px solid green; */
+    border-bottom: 1px solid #F0F3F4;
     padding: 4px;
 }
 
 .snd-div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-color: black;
     margin: 0px 0px;
     display: flex;
@@ -29,7 +29,7 @@
 }
 
 .icon_size {
-    border: 1px solid green;
+    border: 1px solid white;
     border-radius: 50px;
     padding: 4px;
 
@@ -145,3 +145,32 @@
     font-family: "Product Sans", Arial, sans-serif;
     background-color: #FABC05;
 }
+
+.menu-bar {
+    margin-left: -35px;
+    width: 25vh;
+    list-style-position: inside;
+    background-color: rgb(254, 254, 254);
+    width: 250px;
+    border-radius: 10px;
+    text-align: justify;
+    font-family: "Product Sans", Arial, sans-serif;
+    font-size: larger;
+    position: absolute;
+    color: #5f6368;
+    text-decoration: none;
+}
+
+.menu-items li {
+    list-style-type: none; 
+}
+
+.menu-items :hover {
+    background-color: #FDEFC3;
+    border-radius: 10px;
+
+}
+
+
+
+
