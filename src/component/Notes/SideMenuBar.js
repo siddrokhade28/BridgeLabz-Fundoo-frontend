@@ -12,27 +12,28 @@ const SideMenuBar = () => {
         <div className="menu-bar">
             <ul className="menu-items">
                 <li className="lightbulb">
-                    <LightbulbOutlinedIcon />Notes
+                    <LightbulbOutlinedIcon />
+                    <span> Notes</span>
                 </li>
                 <br />
 
                 <li className=" notification">
-                    <NotificationsOutlinedIcon /> Reminder
+                    <NotificationsOutlinedIcon /><span> Reminder </span>
                 </li>
                 <br />
 
                 <li className="edit">
-                    <EditOutlinedIcon /> Edit Label
+                    <EditOutlinedIcon /> <span>Edit Label</span>
                 </li>
                 <br />
 
                 <li>
-                    <ArchiveOutlinedIcon /> Archive
+                    <ArchiveOutlinedIcon /> <span>Archive</span>
                 </li>
                 <br />
 
                 <li>
-                    <DeleteOutlineOutlinedIcon /> Trash
+                    <DeleteOutlineOutlinedIcon /> <span>Trash</span>
                 </li>
             </ul>
 
