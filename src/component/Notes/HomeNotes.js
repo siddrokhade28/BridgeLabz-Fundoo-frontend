@@ -8,12 +8,14 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AppsIcon from '@mui/icons-material/Apps';
 import SideMenuBar from "./SideMenuBar";
+import { Title } from "@mui/icons-material";
 
 
 
 
 const NotesHome = () => {
     const [isExpanded, setExpanded] = useState(false)
+    const [isSideBarExpanded, setSideBarExpanded] = useState(false)
 
     const [user_id, setid] = useState()
 
@@ -34,6 +36,11 @@ const NotesHome = () => {
         console.log(e.target.value)
     }
 
+    //handling toggling of Menu bar
+    const handleSideBar = () => {
+        setSideBarExpanded(prevState => !prevState);
+    }
+
     useEffect(() => {
         if (!localStorage.getItem('token')) {
             naviagte('/Login')
@@ -51,7 +58,7 @@ const NotesHome = () => {
             <div className="fst-div">
                 <div className="snd-div">
                     <div className="menu_icon">
-                        <MenuIcon className="icon_size" />
+                        <MenuIcon className="icon_size" onClick={handleSideBar} />
                     </div>
                     <div className="notes-png">
                         <img className="notes-png" src="https://play-lh.googleusercontent.com/9bJoeaPbGTB8Tz_h4N-p-6ReRd8vSS-frZb2tmJulaGIoTKElKj3zpmcFJvnS96ANZP5" onClick={reloadPage}></img>
@@ -87,7 +94,8 @@ const NotesHome = () => {
                 </div>
             </div >
             <div className="sideBar-div">
-                <SideMenuBar />
+                {isSideBarExpanded ? <SideMenuBar /> : null}
+                {/* <SideMenuBar /> */}
             </div>
             <div className="addNote">
                 <form>
@@ -115,26 +123,12 @@ const NotesHome = () => {
 
             </div>
             <div className="note">
-                <h1>hello</h1>
-                <p>what going on </p>
+                <h1>
+                    helo
+                </h1>
+                <p>how are you </p>
 
             </div>
-            {/* <div className="notes">
-        {
-                        visible === false
-                        ?
-                        <div>
-                        <input type="text" placeholder="Take a note..." onClick={() => setvisible(true)} />
-                        </div>
-                        :
-                        <div>
-                        <input type="text" placeholder='Title' value={title} onChange={(e) => settitle(e.target.value)}/><br></br>
-                        <input type="text" placeholder='Take a note...' value={description} onChange={(e) => setdescription(e.target.value)}/><br></br>
-                        <button disabled={!title || !description ? true : false } onClick={SaveNote}>close</button>
-                        </div>
-                    }
-
-        </div> */}
 
         </div>
     )
