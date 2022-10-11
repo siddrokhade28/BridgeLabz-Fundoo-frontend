@@ -4,20 +4,35 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const SideMenuBar = () => {
-   
+    const naviagte = useNavigate();
+
+    const handleNotes = () => {
+        naviagte('/notes-home')
+
+    }
+
+    const handlearchive = () => {
+        naviagte('/archivePage');
+    }
+
+    const handletrash = () => {
+        naviagte('/trashPage')
+    }
+
     return (
         <div className="menu-bar">
             <ul className="menu-items">
                 <li className="lightbulb">
                     <LightbulbOutlinedIcon />
-                    <span> Notes</span>
+                    <span onClick={handleNotes}> Notes </span>
                 </li>
                 <br />
 
-                <li className=" notification">
+                {/* <li className=" notification">
                     <NotificationsOutlinedIcon /><span> Reminder </span>
                 </li>
                 <br />
@@ -25,15 +40,17 @@ const SideMenuBar = () => {
                 <li className="edit">
                     <EditOutlinedIcon /> <span>Edit Label</span>
                 </li>
-                <br />
+                <br /> */}
 
                 <li>
-                    <ArchiveOutlinedIcon /> <span>Archive</span>
+                    <ArchiveOutlinedIcon />
+                    <span onClick={handlearchive}>Archive</span>
                 </li>
                 <br />
 
                 <li>
-                    <DeleteOutlineOutlinedIcon /> <span>Trash</span>
+                    <DeleteOutlineOutlinedIcon />
+                    <span onClick={handletrash}>Trash</span>
                 </li>
             </ul>
 

@@ -1,134 +1,71 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './HomeNotes.css'
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import RefreshIcon from '@mui/icons-material/Refresh';
-import GridViewIcon from '@mui/icons-material/GridView';
-import SettingsIcon from '@mui/icons-material/Settings';
-import AppsIcon from '@mui/icons-material/Apps';
-import SideMenuBar from "./SideMenuBar";
-import { Title } from "@mui/icons-material";
+
+import Header from "./Header";
+import CreateNote from "./CreateNote";
+import axios from "axios";
+import Note from "./Note";
+import NotesPage from "../Pages/NotesPage";
+import ArchivePage from "../Pages/ArchivePage";
 
 
 
 
 const NotesHome = () => {
-    const [isExpanded, setExpanded] = useState(false)
-    const [isSideBarExpanded, setSideBarExpanded] = useState(false)
-
-    const [user_id, setid] = useState()
-
-    const [note, setnote] = useState({ title: "", content: "" });
 
     const naviagte = useNavigate();
-
-
-
-
-
-
-    const handleLogout = () => {
-        localStorage.clear();
-        naviagte("/login")
-    }
-    const handleNote = (e) => {
-        console.log(e.target.value)
-    }
-
-    //handling toggling of Menu bar
-    const handleSideBar = () => {
-        setSideBarExpanded(prevState => !prevState);
-    }
+    const [note, setNotes] = useState([]);
+    const [leng, setlen] = useState([]);
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [userid, setuserid] = useState()
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
             naviagte('/Login')
+            window.location.reload(true);
         }
 
     })
-    const reloadPage = () => {
-        window.location.reload();
-    }
-    const handleExpanded = () => {
-        setExpanded(true)
-    }
+    const id = localStorage.getItem('userId')
+
+
+
+    useEffect(() => {
+        const loadpage = async () => {
+
+            axios.get(`http://localhost:8080/notes/getNotes/${id}`,)
+                .then(result => {
+                    console.log("result", result.data)
+                    setNotes(result.data.data)
+                    // console.log(result.data.data)
+                    console.log("hello",note.length)
+
+                })
+                .catch(err => { console.log(err) })
+        }
+        loadpage();
+    }, [])
+
+    
+
+
     return (
-        <div className=" parent-div">
+        <div className=" parent-div" >
             <div className="fst-div">
-                <div className="snd-div">
-                    <div className="menu_icon">
-                        <MenuIcon className="icon_size" onClick={handleSideBar} />
-                    </div>
-                    <div className="notes-png">
-                        <img className="notes-png" src="https://play-lh.googleusercontent.com/9bJoeaPbGTB8Tz_h4N-p-6ReRd8vSS-frZb2tmJulaGIoTKElKj3zpmcFJvnS96ANZP5" onClick={reloadPage}></img>
-                    </div>
-
-                    <span className="keep-txt">Keep</span>
-
-                    <div className="Search-bar">
-                        <span><SearchIcon /></span>
-                        <input type="text" placeholder="Search"  ></input>
-                    </div>
-
-                    <div className="other-icon">
-                        <div className="refresh-icon">
-                            <RefreshIcon onClick={reloadPage} />
-                        </div>
-                        <div className="gridView">
-                            <GridViewIcon />
-                        </div>
-                        <div className="setting">
-                            <SettingsIcon />
-                        </div>
-                        <div className="apps">
-                            <AppsIcon />
-                        </div>
-
-                    </div>
-
-                    <div className="logout">
-                        <button type="submit" onClick={handleLogout}
-                        >Logout</button>
-                    </div>
-                </div>
+                <Header />
             </div >
-            <div className="sideBar-div">
-                {isSideBarExpanded ? <SideMenuBar /> : null}
-                {/* <SideMenuBar /> */}
-            </div>
             <div className="addNote">
-                <form>
-                    {isExpanded && (
-                        <input type={'text'}
-                            placeholder='Title'
-                            name="title"
-                            value={note.title}
-                            onChange={handleNote} />)}
-                    {/* <input type={'text'}
-                        placeholder='Title'
-                        name="title"
-                        value={note.title}
-                        onChange={handleNote} /> */}
-                    <p>
-                        <textarea name="content"
-                            placeholder="Write a Note ..."
-                            value={note.content}
-                            onClick={handleExpanded}
-                            onChange={handleNote}
-                            rows={isExpanded ? 3 : 1}>
-                        </textarea>
-                    </p>
-                </form>
-
+                <CreateNote />
             </div>
-            <div className="note">
-                <h1>
-                    helo
-                </h1>
-                <p>how are you </p>
-
+            <div>
+                {
+                    note.filter(notes => notes.status == "Active").map(note => <div key={note.note_id}><Note title={note.title} content={note.description} noteId={note.note_id} /></div>)
+                }
             </div>
+
+
 
         </div>
     )

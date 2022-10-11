@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Open+Sans&family=Roboto:wght@400&display=swap');
 
+
 .fst-div {
-    /* border: 1px solid green; */
-    border-bottom: 1px solid #F0F3F4;
-    padding: 4px;
+    /* border: 100px solid red; */
+    /* border-bottom: 1px solid #F0F3F4; */
+
+    height: 100%;
+    padding: 0px;
+
 }
+
 
 .snd-div {
     /* border: 1px solid black; */
-    border-color: black;
+    width: 100%;
     margin: 0px 0px;
     display: flex;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 
 }
 
@@ -23,10 +28,10 @@
     transform: scale(1.1);
 }
 
-.menu_icon :hover {
+/* .menu_icon :hover {
     background-color: #F0F3F4;
 
-}
+} */
 
 .icon_size {
     border: 1px solid white;
@@ -146,6 +151,7 @@
 }
 
 .menu-bar {
+
     margin-left: -35px;
     width: 25vh;
     list-style-position: inside;
@@ -213,28 +219,68 @@
     margin: 4px 10px;
     outline: none;
     font-size: 1rem;
-    resize:none;
+    resize: none;
     font-family: "Google Sans", Roboto, Arial, sans-serif;
     font-weight: 500;
 }
-.note{
+
+.note {
     background: white;
     width: 240px;
     border-radius: 7px;
     box-shadow: 0 2px 5px rgb(175, 175, 175);
     padding: 10px;
     margin-top: 10vh;
-    margin-left: 30vh;
+    margin-left: 2vh;
     float: left;
 }
-.note h1{
+
+.note h1 {
     font-size: 1rem;
     margin-bottom: 6px;
 
 }
+
 .note p {
-     font-size: 1rem;
-     margin-bottom: unset;
-     white-space: pre-wrap;
-     word-wrap: break-word;
+    font-size: 1rem;
+    margin-bottom: unset;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.desc_icon {
+    display: flex;
+    margin-left: 1rem;
+}
+
+.bottonicon {
+    padding: 0 25px 0 10px;
+    transform: scale(0.79);
+    color: #5f6368
+}
+
+form button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 18px;
+    bottom: -13px;
+    background-color: #FABC05;
+    color: #F0F3F4;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px gray
+}
+
+.notesicons {
+    margin-top: 5px;
+    float: right;
+    padding-left: 0px;
+}
+
+.note span{
+    float: right;
 }

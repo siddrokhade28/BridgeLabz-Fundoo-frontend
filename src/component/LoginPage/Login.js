@@ -36,15 +36,15 @@ const Login = ({ handleChange }) => {
                 localStorage.clear();
                 console.log(result);
                 navigate('/notes-home')
-                console.log("token", result.data.data);
-                localStorage.setItem('token', result.data.data)
+                console.log("token", result.data.message);
+                localStorage.setItem('token', result.data.message)
+                localStorage.setItem('userId', result.data.data)
 
             })
             .catch(err => {
                 console.log("error 1:", err)
                 setError(err.response.data.message);
             })
-
     }
 
     return (

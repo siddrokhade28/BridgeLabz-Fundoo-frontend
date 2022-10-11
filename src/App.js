@@ -5,7 +5,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ForgotPassword from './component/LoginPage/ForgotPassword';
 import NotesHome from './component/Notes/HomeNotes';
 import ResetPassword from './component/LoginPage/ResetPassword';
-import Notes from './component/Pages/Notes';
+import NotesPage from './component/Pages/NotesPage';
+import ArchivePage from './component/Pages/ArchivePage'
+import Trashpage from './component/Pages/Trashpage';
 
 
 
@@ -23,7 +25,9 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
 
           <Route path='/notes-home' element={<NotesHome />} />
-          <Route path='/notes' element={<Notes />} />
+          <Route path='/notes-home' element={<NotesPage />} />
+          <Route path='/archivePage' element={<ArchivePage />} />
+          <Route path='/trashPage' element={<Trashpage />} />
 
 
         </Routes>
