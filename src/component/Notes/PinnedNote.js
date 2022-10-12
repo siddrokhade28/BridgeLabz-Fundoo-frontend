@@ -3,21 +3,12 @@ import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import { DeleteOutline } from '@mui/icons-material';
 import axios from 'axios';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-
-
-
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import PushPinIcon from '@mui/icons-material/PushPin';
 
 
 
 
-const Note = ({ title, content, noteId }) => {
+const PinnedNote = ({ title, content, noteId }) => {
 
     // const [open, setOpen] = useState(false)
     // const [Utitle, setTitle] = useState('');
@@ -59,32 +50,9 @@ const Note = ({ title, content, noteId }) => {
 
 
     return (
-
-        <div className="note" >
-            {/* <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-        </DialogActions>
-      </Dialog> */}
+        <div className="note">
             <span>
-                <PushPinOutlinedIcon onClick={handlepin} />
+                <PushPinIcon onClick={handlepin} />
             </span>
             <h1>
                 {title}
@@ -98,4 +66,4 @@ const Note = ({ title, content, noteId }) => {
         </div>
     )
 }
-export default Note;
+export default PinnedNote;

@@ -7,6 +7,7 @@ import GridViewIcon from '@mui/icons-material/GridView';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AppsIcon from '@mui/icons-material/Apps';
 import SideMenuBar from "./SideMenuBar";
+import { Button } from "@mui/material";
 
 const Header = () => {
     const [isSideBarExpanded, setSideBarExpanded] = useState(false)
@@ -64,8 +65,8 @@ const Header = () => {
             </div>
 
             <div className="logout">
-                <button type="submit" onClick={handleLogout}
-                >Logout</button>
+                <Button type="submit" onClick={handleLogout} variant="contained" style={{ backgroundColor: "#FABC05" }}
+                >Logout</Button>
 
             </div>
         </div>
