@@ -12,10 +12,9 @@
 
 
 .snd-div {
-    /* border: 1px solid black; */
+    border: 1px solid rgb(216, 216, 216);
     width: 100%;
     display: flex;
-    /* vertical-align: middle; */
     align-items: center;
 
 }
@@ -45,7 +44,7 @@
     width: 50px;
     height: 50px;
     cursor: pointer;
-    padding-top: 1px;
+    /* padding-top: 1px; */
     transform: scale(1);
 }
 
@@ -54,7 +53,7 @@
     color: #5f6368;
     opacity: 1;
     font-family: "Product Sans", Arial, sans-serif;
-    padding-top: 16px;
+    /* padding-top: 16px; */
     font-size: 22px;
     position: relative;
 }
@@ -66,14 +65,14 @@
     border-radius: 10px;
     background-color: #F0F3F4;
     height: 40px;
-    display: flex;
-    margin-top: 9px;
+    /* margin-top: 9px; */
+    align-items: center;
 
 
 }
 
 .Search-bar input {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border-style: none;
     font-size: medium;
     background-color: #F0F3F4;
@@ -85,16 +84,16 @@
 }
 
 .Search-bar span {
-    padding-left: 10px;
-    padding-bottom: 70px;
-    margin-top: 13px;
+    /* padding-left: 10px; */
+    /* padding-bottom: 70px; */
+    /* margin-top: 13px; */
     transform: scale(1.1);
 }
 
 .other-icon {
     display: flex;
     margin-left: 60px;
-    padding-top: 8px;
+    /* padding-top: 8px; */
 
 }
 
@@ -134,8 +133,9 @@
     cursor: pointer;
     padding-top: 10px;
     transform: scale(1.1);
-    padding-left: 20px;
-    border-radius: 50px;
+    padding-left: 23vh;
+    float: right;
+
 }
 
 .logout {
@@ -223,7 +223,7 @@
     border-radius: 7px;
     box-shadow: 0 2px 5px rgb(175, 175, 175);
     padding: 10px;
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
     margin-left: 2vh;
     float: left;
 }
@@ -272,21 +272,25 @@ form button {
     margin-top: 5px;
     float: right;
     padding-left: 0px;
+    cursor: pointer;
 }
 
 .note span {
     float: right;
+    cursor: pointer;
 }
 
 .pinned {
     margin-left: 20px;
     margin-top: 15vh;
-    
-    
+    outline: none;
+
+
 }
 
 .pinned h2 {
     color: #aaacad;
+    padding-bottom: -50px;
 
 }
 

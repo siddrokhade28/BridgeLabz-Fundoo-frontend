@@ -6,10 +6,7 @@ import Header from "./Header";
 import CreateNote from "./CreateNote";
 import axios from "axios";
 import Note from "./Note";
-import NotesPage from "../Pages/NotesPage";
-import ArchivePage from "../Pages/ArchivePage";
 import PinnedNote from "./PinnedNote";
-import { Divider } from "@mui/material";
 
 
 
@@ -37,29 +34,22 @@ const NotesHome = () => {
                 .then(result => {
                     console.log("result", result.data)
                     setNotes(result.data.data)
-                    // setNotes(["hello"])
-
                 })
                 .catch(err => { console.log(err) })
 
         }
         loadpage();
-    }, [])
+    }, [id])
 
     useEffect(() => { lenth(); })
 
     const lenth = () => {
-        const len = note.filter(notes => notes.status == "Pinned").length;
-        if (len != 0) {
+        const len = note.filter(notes => notes.status === "Pinned").length;
+        if (len !== 0) {
             setIspinned(true);
         }
 
     }
-
-
-
-
-
 
     return (
         <div className=" parent-div" >
@@ -69,33 +59,30 @@ const NotesHome = () => {
             <div className="addNote">
                 <CreateNote />
             </div>
-
-
             <div>
                 {ispinned ? (<div className="pinned" >
                     <div className="pinned1" >
                         <h2>Pinned</h2>
                         {
-                            note.filter(notes => notes.status == "Pinned").map(note => <div key={note.note_id}><PinnedNote title={note.title} content={note.description} noteId={note.note_id} /></div>)
+                            note.filter(notes => notes.status === "Pinned").map(note => <div key={note.note_id}><PinnedNote title={note.title} content={note.description} noteId={note.note_id} /></div>)
                         }
                     </div>
                     <div className="pinned2">
                         <h2>Others</h2>
-                        {
-                            note.filter(notes => notes.status == "Active").map(note => <div key={note.note_id}><Note title={note.title} content={note.description} noteId={note.note_id} /></div>)
-                        }
+                        <div>
+                            {
+                                note.filter(notes => notes.status === "Active").map(note => <div key={note.note_id}><Note title={note.title} content={note.description} noteId={note.note_id} /></div>)
+                            }
+                        </div>
                     </div>
                 </div>
                 ) : (<div>
                     {
-                        note.filter(notes => notes.status == "Active").map(note => <div key={note.note_id}><Note title={note.title} content={note.description} noteId={note.note_id} /></div>)
+                        note.filter(notes => notes.status === "Active").map(note => <div key={note.note_id}><Note title={note.title} content={note.description} noteId={note.note_id} /></div>)
                     }
                 </div>)}
 
             </div>
-
-
-
 
         </div>
     )

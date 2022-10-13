@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import { DeleteOutline } from '@mui/icons-material';
 import axios from 'axios';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-
-
-
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 
 
 
 
 const Note = ({ title, content, noteId }) => {
 
-    // const [open, setOpen] = useState(false)
-    // const [Utitle, setTitle] = useState('');
-    // const [Ucontent, setContent] = useState('');
+    const [open, setOpen] = React.useState(false);
+    const [utitle, setTitle] = useState(title);
+    const [ucontent, setContent] = useState(content);
+    const token = localStorage.getItem('token')
+    const id = localStorage.getItem('userId')
 
     const handlearchive = () => {
         axios.get(`http://localhost:8080/notes/archive/${noteId}`)
@@ -54,35 +50,77 @@ const Note = ({ title, content, noteId }) => {
 
     }
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
+    const submitButton = (i) => {
+        i.preventDefault();
+        const noteData = {
+            title: utitle,
+            description: ucontent
+        };
+        if (noteData.title === "" && noteData.description === "") {
+            return;
+        }
+        else {
+
+            axios.put(`http://localhost:8080/notes/update/${id}/${noteId}`, noteData, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(result => {
+                    console.log(result.data)
+                    window.location.reload(true);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }
+
+
+    const handleTitle = (event) => {
+        setTitle(event.target.value);
+        console.log(title)
+    }
+
+    const handleContent = (event) => {
+        setContent(event.target.value)
+        console.log(content);
+    }
 
 
     return (
 
-        <div className="note" >
-            {/* <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-        </DialogActions>
-      </Dialog> */}
+        <div className="note" onClick={handleClickOpen}>
+            <Dialog open={open} onClose={handleClose}>
+                <DialogContent>
+                    <form>
+                        <input type={'text'}
+                            placeholder='Title'
+                            name="title"
+                            value={utitle}
+                            onChange={(e) => { handleTitle(e) }} />
+                        <p>
+                            <textarea name="content"
+                                placeholder="Write a Note ..."
+                                value={ucontent}
+                                onChange={(e) => { handleContent(e) }}>
+                            </textarea>
+                        </p>
+                    </form>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={submitButton} variant="contained" style={{ backgroundColor: "#FABC05" }}>Update</Button>
+                </DialogActions>
+            </Dialog>
             <span>
                 <PushPinOutlinedIcon onClick={handlepin} />
             </span>
